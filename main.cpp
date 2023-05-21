@@ -6,14 +6,45 @@
 
 
 
-void read(const std::string& filename) {
+void read(const std::string& filename) 
+{
     // TODO: Implement your code here
 }
 
 
 
-void find(const std::string& filename) {
+void find(const std::string& filename) 
+{
     // TODO: Implement your code here
+    
+    std::cout << "Executing myFunction..." << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::cout << "myFunction completed." << std::endl;
+}
+
+
+
+// Function with timeout
+bool executeWithTimeout(unsigned int timeoutSeconds)
+{
+    // Create a thread to execute myFunction
+    std::thread t(myFunction);
+
+    // Wait for the specified timeout duration
+    std::this_thread::sleep_for(std::chrono::seconds(timeoutSeconds));
+
+    // Check if the thread is still running
+    if (t.joinable())
+    {
+        // Timeout occurred, stop the thread
+        t.detach(); // or t.join();
+        std::cout << "Timeout occurred!" << std::endl;
+        return false;
+    }
+
+    // Thread completed within the timeout
+    std::cout << "Execution completed within the timeout." << std::endl;
+    return true;
 }
 
 
@@ -41,7 +72,8 @@ int main() {
 
     closedir(directory);
 
-    for (size_t i = 1; i < files.size(); ++i) {
+    for (size_t i = 1; i < files.size(); ++i) 
+    {
         std::string& file = files[i];
         auto start = std::chrono::high_resolution_clock::now();
 
