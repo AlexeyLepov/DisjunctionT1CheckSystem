@@ -1,5 +1,7 @@
-# vs
+# builds & env
 .vscode/
+*.exe
+*.o
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
