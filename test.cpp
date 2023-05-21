@@ -10,7 +10,7 @@ const int timeoutTime = 1;
 
 
 
-void read(const std::string& filename) 
+void read(const std::string& filename)
 {
 
 
@@ -32,6 +32,8 @@ void read(const std::string& filename)
         std::cerr << "Failed to open file: " << filename << std::endl;
     }
 }
+
+
 
 void find(const std::string& filename)
 {
@@ -108,20 +110,17 @@ int main()
 
 
     // Printing the result
-    std::string output;
+   std::cout << std::scientific;
     for (double time : times)
     {
         if (time < timeoutTime)
         {
-            output += std::to_string(time) + " ";
+            std::cout << time << " ";
         }
         else
         {
-            output += "inf ";
+            std::cout << "inf ";
         }
     }
-    output.pop_back();
-
-    std::cout << output << std::endl;
     return 0;
 }
