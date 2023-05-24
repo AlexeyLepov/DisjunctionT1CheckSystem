@@ -28,7 +28,7 @@ def find_timeout(filename):
 def main():
     files = listdir("./tests")
     # first double file is necessary for the corret time check
-    times = [timeit(lambda: find_timeout(file), number = 1) for file in [files[0]]+files][1:]
+    times = [timeit(lambda: find_timeout("./tests/"+file), number = 1) for file in [files[0]]+files][1:]
     print(*[time if time < timeout_time else "inf" for time in times])
 
 
