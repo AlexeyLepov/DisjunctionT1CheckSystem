@@ -95,7 +95,7 @@ int main()
                     std::cerr << e.what() << std::endl;
                 }
                 auto endTime = std::chrono::high_resolution_clock::now();
-                double duration = std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count() / 1'000'000'000.0;
+                double duration = std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count() / 1000000000.0;
                 times.push_back(duration);
             }
         }
